@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AiDock - Privacy Policy</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: #1a1a2e;
+      background: #f8fafc;
+      line-height: 1.8;
+    }
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 60px 24px 80px;
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 48px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .header h1 {
+      font-size: 28px;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 8px;
+    }
+    .header .subtitle {
+      font-size: 15px;
+      color: #64748b;
+    }
+    .header .update {
+      font-size: 13px;
+      color: #94a3b8;
+      margin-top: 12px;
+    }
+    h2 {
+      font-size: 20px;
+      font-weight: 600;
+      color: #0f172a;
+      margin: 36px 0 12px;
+    }
+    p, li {
+      font-size: 15px;
+      color: #334155;
+      margin-bottom: 12px;
+    }
+    ul {
+      padding-left: 24px;
+      margin-bottom: 16px;
+    }
+    li { margin-bottom: 6px; }
+    .highlight {
+      background: #f0f9ff;
+      border-left: 3px solid #38bdf8;
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin: 20px 0;
+    }
+    .highlight p { margin-bottom: 0; color: #0c4a6e; }
+    .footer {
+      text-align: center;
+      margin-top: 60px;
+      padding-top: 24px;
+      border-top: 1px solid #e2e8f0;
+      font-size: 13px;
+      color: #94a3b8;
+    }
+    a { color: #0ea5e9; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+    }
+    th, td {
+      text-align: left;
+      padding: 10px 14px;
+      border: 1px solid #e2e8f0;
+      font-size: 14px;
+    }
+    th {
+      background: #f1f5f9;
+      font-weight: 600;
+      color: #0f172a;
+    }
+    td { color: #334155; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>AiDock Privacy Policy</h1>
+      <p class="subtitle">Chrome Extension — AI Chat Organizer</p>
+      <p class="update">Last updated: April 16, 2026</p>
+    </div>
+
+    <div class="highlight">
+      <p><strong>TL;DR</strong> — AiDock does not collect, transmit, or share any personal data. All conversation data stays on your device in Chrome's local storage. No analytics, no tracking, no external servers.</p>
+    </div>
+
+    <h2>1. Information We Collect</h2>
+    <p><strong>None.</strong> AiDock does not collect any personal information, usage analytics, or telemetry of any kind.</p>
+
+    <h2>2. How AiDock Works</h2>
+    <p>AiDock reads <strong>only conversation titles</strong> from the sidebar of supported AI platforms to help you organize your chats. Specifically:</p>
+    <ul>
+      <li>A content script runs on supported AI platform pages (listed below).</li>
+      <li>It reads conversation titles and URLs from the visible sidebar elements.</li>
+      <li>This data is stored <strong>locally</strong> in Chrome's storage on your device.</li>
+      <li>The extension <strong>does not</strong> read conversation content, messages, or any personal data.</li>
+      <li>The extension <strong>does not</strong> modify any page content on AI platforms.</li>
+    </ul>
+
+    <h2>3. Supported Platforms</h2>
+    <p>AiDock accesses the following websites solely to read conversation titles from their sidebars:</p>
+    <table>
+      <tr><th>Platform</th><th>Domains</th></tr>
+      <tr><td>ChatGPT</td><td>chatgpt.com, chat.openai.com</td></tr>
+      <tr><td>Claude</td><td>claude.ai</td></tr>
+      <tr><td>Gemini</td><td>gemini.google.com</td></tr>
+      <tr><td>DeepSeek</td><td>chat.deepseek.com, www.deepseek.com</td></tr>
+      <tr><td>Grok</td><td>grok.com</td></tr>
+      <tr><td>Perplexity</td><td>perplexity.ai, www.perplexity.ai</td></tr>
+      <tr><td>Kimi</td><td>kimi.moonshot.cn, kimi.com</td></tr>
+      <tr><td>Doubao (豆包)</td><td>doubao.com, www.doubao.com</td></tr>
+      <tr><td>Tongyi Qianwen (通义千问)</td><td>tongyi.aliyun.com, qianwen.aliyun.com</td></tr>
+      <tr><td>ChatGLM (智谱清言)</td><td>chatglm.cn</td></tr>
+    </table>
+
+    <h2>4. Permissions Explained</h2>
+    <table>
+      <tr><th>Permission</th><th>Purpose</th></tr>
+      <tr><td><strong>storage</strong></td><td>Stores your preferences (theme, language, folder structure) and conversation metadata locally in Chrome's extension storage. Data never leaves your browser.</td></tr>
+      <tr><td><strong>sidePanel</strong></td><td>Displays the conversation management panel as a Chrome side panel.</td></tr>
+      <tr><td><strong>activeTab</strong></td><td>Reads the current tab's URL to identify which AI platform the user is on.</td></tr>
+      <tr><td><strong>tabs</strong></td><td>Navigates to the correct conversation URL when user clicks a conversation in the panel.</td></tr>
+      <tr><td><strong>Host permissions</strong></td><td>Injects a content script on supported AI platform pages to read conversation titles from the sidebar. The script only reads publicly visible sidebar elements.</td></tr>
+    </table>
+
+    <h2>5. Network Requests</h2>
+    <p>AiDock makes <strong>zero network requests</strong>. The extension operates entirely offline once installed. There are no API calls, no telemetry endpoints, and no external resource loading.</p>
+
+    <h2>6. Data Storage</h2>
+    <p>All data is stored locally on your device via Chrome's <code>chrome.storage.local</code> API:</p>
+    <ul>
+      <li><strong>Conversation metadata</strong> — titles, platform identifiers, folder assignments, pinned/starred status</li>
+      <li><strong>Folder structure</strong> — folder names and organization</li>
+      <li><strong>User preferences</strong> — theme (dark/light), language (English/Chinese), visible platforms</li>
+    </ul>
+    <p>No conversation content or messages are stored. All data remains on your device and is never transmitted externally.</p>
+
+    <h2>7. Third-Party Services</h2>
+    <p>AiDock does not integrate with or send data to any third-party services, advertising networks, or analytics platforms.</p>
+
+    <h2>8. Children's Privacy</h2>
+    <p>AiDock does not collect any data from anyone, including children under the age of 13.</p>
+
+    <h2>9. Changes to This Policy</h2>
+    <p>If we make changes to this privacy policy, we will update this page with the new date. Since AiDock is designed as a local-only tool, we do not anticipate significant changes.</p>
+
+    <h2>10. Contact</h2>
+    <p>If you have any questions about this privacy policy, please open an issue on our <a href="https://github.com/nichuanfang/aidock">GitHub repository</a>.</p>
+
+    <div class="footer">
+      <p>&copy; 2026 AiDock. All rights reserved.</p>
+    </div>
+  </div>
+</body>
+</html>
