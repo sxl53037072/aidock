@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AiDock — Pricing</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: #1a1a2e;
+      background: #f8fafc;
+      line-height: 1.7;
+    }
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 60px 24px 80px;
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .header h1 {
+      font-size: 32px;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 8px;
+    }
+    .header p {
+      font-size: 16px;
+      color: #64748b;
+    }
+    .plans {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-top: 40px;
+    }
+    .plan {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 32px 28px;
+      position: relative;
+      transition: box-shadow 0.2s;
+    }
+    .plan:hover {
+      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+    }
+    .plan.featured {
+      border-color: #3b82f6;
+      box-shadow: 0 4px 20px rgba(59,130,246,0.15);
+    }
+    .plan .badge {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #3b82f6;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 16px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .plan h2 {
+      font-size: 22px;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 4px;
+    }
+    .plan .price {
+      font-size: 36px;
+      font-weight: 800;
+      color: #0f172a;
+      margin: 16px 0 4px;
+    }
+    .plan .price span {
+      font-size: 15px;
+      font-weight: 400;
+      color: #64748b;
+    }
+    .plan .save {
+      font-size: 13px;
+      color: #16a34a;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+    .plan .desc {
+      font-size: 14px;
+      color: #64748b;
+      margin-bottom: 20px;
+    }
+    .plan ul {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 24px;
+    }
+    .plan ul li {
+      font-size: 14px;
+      color: #334155;
+      padding: 6px 0;
+      padding-left: 24px;
+      position: relative;
+    }
+    .plan ul li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: #16a34a;
+      font-weight: 700;
+    }
+    .plan .cta {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 600;
+      text-align: center;
+      cursor: pointer;
+      border: none;
+      transition: background 0.2s;
+      text-decoration: none;
+    }
+    .plan .cta-primary {
+      background: #3b82f6;
+      color: #fff;
+    }
+    .plan .cta-primary:hover {
+      background: #2563eb;
+    }
+    .plan .cta-secondary {
+      background: #f1f5f9;
+      color: #334155;
+    }
+    .plan .cta-secondary:hover {
+      background: #e2e8f0;
+    }
+    .faq {
+      max-width: 680px;
+      margin: 64px auto 0;
+    }
+    .faq h2 {
+      font-size: 24px;
+      font-weight: 700;
+      color: #0f172a;
+      text-align: center;
+      margin-bottom: 32px;
+    }
+    .faq-item {
+      border-bottom: 1px solid #e2e8f0;
+      padding: 20px 0;
+    }
+    .faq-item h3 {
+      font-size: 15px;
+      font-weight: 600;
+      color: #0f172a;
+      margin-bottom: 8px;
+    }
+    .faq-item p {
+      font-size: 14px;
+      color: #475569;
+    }
+    .footer {
+      text-align: center;
+      margin-top: 64px;
+      padding-top: 24px;
+      border-top: 1px solid #e2e8f0;
+      font-size: 13px;
+      color: #94a3b8;
+    }
+    .footer a { color: #64748b; text-decoration: none; }
+    .footer a:hover { text-decoration: underline; }
+    .links { margin-top: 8px; }
+    .links a { margin: 0 12px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>AiDock Pricing</h1>
+      <p>Organize all your AI conversations across ChatGPT, Claude, Gemini, DeepSeek & more.</p>
+    </div>
+
+    <div class="plans">
+      <!-- Free -->
+      <div class="plan">
+        <h2>Free</h2>
+        <div class="price">$0 <span>forever</span></div>
+        <p class="desc">Everything you need to get started</p>
+        <ul>
+          <li>3 AI platforms (ChatGPT, Claude, Gemini)</li>
+          <li>5 folders + 1-level nesting</li>
+          <li>3 pinned + 10 starred chats</li>
+          <li>Title search</li>
+          <li>Export to Markdown & TXT</li>
+          <li>Dark & light themes</li>
+          <li>Side panel interface</li>
+        </ul>
+        <a href="https://chromewebstore.google.com/detail/aidock" class="cta cta-secondary">Install Free</a>
+      </div>
+
+      <!-- Pro Yearly -->
+      <div class="plan featured">
+        <div class="badge">Most Popular</div>
+        <h2>Pro Yearly</h2>
+        <div class="price">$49.9 <span>/year</span></div>
+        <p class="save">Save 30% — just $4.16/month</p>
+        <p class="desc">Full power for serious AI users</p>
+        <ul>
+          <li>10+ AI platforms (incl. DeepSeek, Kimi, Doubao)</li>
+          <li>Unlimited folders, pins & stars</li>
+          <li>3-level nested sub-folders</li>
+          <li>Full-text search + advanced filters</li>
+          <li>Export to PDF, JSON, DOCX</li>
+          <li>Batch export entire folders</li>
+          <li>Folder color icons & emoji</li>
+          <li>Cloud sync (coming soon)</li>
+          <li>Priority support</li>
+        </ul>
+        <a href="#" class="cta cta-primary">Upgrade to Pro</a>
+      </div>
+
+      <!-- Pro Monthly -->
+      <div class="plan">
+        <h2>Pro Monthly</h2>
+        <div class="price">$5.9 <span>/month</span></div>
+        <p class="desc">Flexible month-to-month billing</p>
+        <ul>
+          <li>Everything in Pro Yearly</li>
+          <li>Cancel anytime</li>
+          <li>No commitment</li>
+        </ul>
+        <a href="#" class="cta cta-secondary">Subscribe Monthly</a>
+      </div>
+    </div>
+
+    <div class="faq">
+      <h2>Frequently Asked Questions</h2>
+
+      <div class="faq-item">
+        <h3>Can I try AiDock for free?</h3>
+        <p>Yes! AiDock's free tier is fully functional with support for ChatGPT, Claude, and Gemini. You can use folders, search, export, and more — no credit card required.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>What payment methods do you accept?</h3>
+        <p>We accept credit/debit cards (Visa, Mastercard, American Express), PayPal, and Apple Pay through our payment partner Paddle.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Can I cancel anytime?</h3>
+        <p>Yes. You can cancel your subscription at any time from your account settings. You'll keep Pro access until the end of your current billing period.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>What happens to my data if I downgrade?</h3>
+        <p>Your data is never deleted. If you exceed Free tier limits after downgrading, existing items are preserved but you won't be able to create new ones beyond the limits.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Do you offer refunds?</h3>
+        <p>Yes, we offer a 14-day money-back guarantee. See our <a href="refund-policy.html">refund policy</a> for details.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Is my data safe?</h3>
+        <p>Absolutely. AiDock stores all data locally on your device. We do not read, transmit, or store your conversation content. See our <a href="privacy-policy.html">privacy policy</a> for details.</p>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>&copy; 2026 AiDock. All rights reserved.</p>
+      <div class="links">
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="terms-of-service.html">Terms of Service</a>
+        <a href="refund-policy.html">Refund Policy</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
