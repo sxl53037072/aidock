@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AiDock — AI Chat Organizer for Chrome</title>
+  <meta name="description" content="Organize all your AI conversations across ChatGPT, Claude, Gemini, DeepSeek and more. Folders, search, export — one side panel for everything.">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: #1a1a2e;
+      background: #f8fafc;
+      line-height: 1.7;
+    }
+    a { color: #3b82f6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Nav */
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 20px 24px;
+    }
+    .nav-logo {
+      font-size: 22px;
+      font-weight: 800;
+      color: #0f172a;
+    }
+    .nav-links a {
+      margin-left: 28px;
+      font-size: 14px;
+      font-weight: 500;
+      color: #475569;
+    }
+    .nav-links a:hover { color: #3b82f6; text-decoration: none; }
+
+    /* Hero */
+    .hero {
+      text-align: center;
+      padding: 80px 24px 64px;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+    .hero h1 {
+      font-size: 44px;
+      font-weight: 800;
+      color: #0f172a;
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+    .hero h1 span { color: #3b82f6; }
+    .hero p {
+      font-size: 18px;
+      color: #64748b;
+      max-width: 600px;
+      margin: 0 auto 36px;
+    }
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 32px;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s;
+    }
+    .btn-primary { background: #3b82f6; color: #fff; }
+    .btn-primary:hover { background: #2563eb; text-decoration: none; }
+    .btn-outline { background: #fff; color: #334155; border: 1px solid #e2e8f0; }
+    .btn-outline:hover { border-color: #3b82f6; color: #3b82f6; text-decoration: none; }
+
+    /* Platforms */
+    .platforms {
+      text-align: center;
+      padding: 32px 24px 56px;
+    }
+    .platforms p {
+      font-size: 13px;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+    .platform-list {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      flex-wrap: wrap;
+      font-size: 15px;
+      color: #64748b;
+      font-weight: 500;
+    }
+    .platform-list span::before {
+      content: '●';
+      margin-right: 6px;
+      font-size: 8px;
+      vertical-align: middle;
+    }
+
+    /* Features */
+    .features {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 64px 24px;
+    }
+    .features h2 {
+      text-align: center;
+      font-size: 32px;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 48px;
+    }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 32px;
+    }
+    .feature-card {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 32px 28px;
+      transition: box-shadow 0.2s;
+    }
+    .feature-card:hover {
+      box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+    }
+    .feature-icon {
+      font-size: 32px;
+      margin-bottom: 16px;
+    }
+    .feature-card h3 {
+      font-size: 18px;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 8px;
+    }
+    .feature-card p {
+      font-size: 14px;
+      color: #64748b;
+    }
+
+    /* How it works */
+    .how {
+      background: #fff;
+      padding: 72px 24px;
+    }
+    .how h2 {
+      text-align: center;
+      font-size: 32px;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 48px;
+    }
+    .steps {
+      display: flex;
+      gap: 40px;
+      max-width: 900px;
+      margin: 0 auto;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .step {
+      flex: 1;
+      min-width: 220px;
+      text-align: center;
+    }
+    .step-num {
+      width: 48px;
+      height: 48px;
+      background: #eff6ff;
+      color: #3b82f6;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .step h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 8px;
+    }
+    .step p {
+      font-size: 14px;
+      color: #64748b;
+    }
+
+    /* CTA */
+    .cta-section {
+      text-align: center;
+      padding: 72px 24px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .cta-section h2 {
+      font-size: 28px;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 12px;
+    }
+    .cta-section p {
+      font-size: 16px;
+      color: #64748b;
+      margin-bottom: 32px;
+    }
+
+    /* Footer */
+    .footer {
+      border-top: 1px solid #e2e8f0;
+      text-align: center;
+      padding: 32px 24px;
+      font-size: 13px;
+      color: #94a3b8;
+    }
+    .footer-links { margin-top: 8px; }
+    .footer-links a { color: #64748b; margin: 0 12px; font-size: 13px; }
+
+    @media (max-width: 640px) {
+      .hero h1 { font-size: 30px; }
+      .hero p { font-size: 16px; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav class="nav">
+    <div class="nav-logo">AiDock</div>
+    <div class="nav-links">
+      <a href="#features">Features</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="privacy-policy.html">Privacy</a>
+      <a href="https://chromewebstore.google.com/detail/aidock-ai-conversation-ma/egalaijjmojfnnefehaajbedfjabpijd">Chrome Web Store</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <h1>Organize All Your <span>AI Conversations</span> in One Place</h1>
+    <p>AiDock is a Chrome extension that brings folders, search, and export to ChatGPT, Claude, Gemini, DeepSeek, and 10+ AI platforms — right in your browser's side panel.</p>
+    <div class="hero-buttons">
+      <a href="https://chromewebstore.google.com/detail/aidock-ai-conversation-ma/egalaijjmojfnnefehaajbedfjabpijd" class="btn btn-primary">
+        Install for Free
+      </a>
+      <a href="pricing.html" class="btn btn-outline">
+        View Pricing
+      </a>
+    </div>
+  </section>
+
+  <!-- Supported Platforms -->
+  <div class="platforms">
+    <p>Works with your favorite AI platforms</p>
+    <div class="platform-list">
+      <span>ChatGPT</span>
+      <span>Claude</span>
+      <span>Gemini</span>
+      <span>DeepSeek</span>
+      <span>Grok</span>
+      <span>Perplexity</span>
+      <span>Kimi</span>
+      <span>Doubao</span>
+      <span>Tongyi</span>
+      <span>ChatGLM</span>
+    </div>
+  </div>
+
+  <!-- Features -->
+  <section class="features" id="features">
+    <h2>Everything You Need to Stay Organized</h2>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feature-icon">📂</div>
+        <h3>Smart Folders</h3>
+        <p>Create folders and sub-folders to organize conversations by project, topic, or client. Drag and drop to rearrange.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔍</div>
+        <h3>Instant Search</h3>
+        <p>Find any conversation across all platforms instantly. Filter by platform, date, or folder.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📌</div>
+        <h3>Pin & Star</h3>
+        <p>Pin important conversations to the top. Star your favorites for quick access across all platforms.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📤</div>
+        <h3>Export Anywhere</h3>
+        <p>Export conversations to Markdown, TXT, PDF, JSON, or DOCX. Batch export entire folders at once.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🎨</div>
+        <h3>Beautiful Interface</h3>
+        <p>Clean side panel design with dark and light themes. Seamlessly integrates with your browser workflow.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔒</div>
+        <h3>Privacy First</h3>
+        <p>All data stays on your device. No servers, no tracking, no analytics. Your conversations are yours.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="how">
+    <h2>How It Works</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Install Extension</h3>
+        <p>Add AiDock to Chrome from the Web Store. It takes less than 10 seconds.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Chat as Usual</h3>
+        <p>Use ChatGPT, Claude, Gemini, or any supported platform. AiDock automatically detects your conversations.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Organize & Find</h3>
+        <p>Open the side panel to organize chats into folders, search across platforms, and export what you need.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <h2>Ready to Organize Your AI Chats?</h2>
+    <p>Join thousands of users who manage their AI conversations smarter with AiDock.</p>
+    <a href="https://chromewebstore.google.com/detail/aidock-ai-conversation-ma/egalaijjmojfnnefehaajbedfjabpijd" class="btn btn-primary">
+      Get AiDock for Free
+    </a>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2026 AiDock. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="pricing.html">Pricing</a>
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="terms-of-service.html">Terms of Service</a>
+      <a href="refund-policy.html">Refund Policy</a>
+      <a href="https://github.com/sxl53037072/aidock">GitHub</a>
+    </div>
+  </footer>
+
+</body>
+</html>
